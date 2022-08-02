@@ -1,0 +1,160 @@
+<html>
+
+<head>
+    <style>
+        .statement-area {
+
+        }
+        .statement-at-front #scene {
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="statement-area">
+        <div class="statement-at-front">
+            <canvas id="scene"></canvas>
+        </div>
+    </div>
+
+    <script>
+        let canvas = document.querySelector('.statement-area').querySelector('.statement-at-front').querySelector('#scene')
+        let ctx = canvas.getContext('2d')
+
+        canvas.width = canvas.clientWidth
+        canvas.height = canvas.clientHeight
+
+        if(window.devicePixelRatio > 1) {
+            canvas.width = canvas.clientWidth * 2
+            canvas.height = canvas.clientHeight * 2
+
+            ctx.scale(2, 2)
+        }
+
+        let width = canvas.width
+        let height = canvas.height
+
+        let FIELD_OF_VIEW = width * 0.8
+
+        // let move it forward
+        // kk
+        function Fabrick() {
+            let that = this
+
+            that.constructKnot = function (w, h, d) {
+                let knot = new RectangleOnPaper(w, h, d)
+
+                return knot
+            }
+        }
+        function Pencil() {
+            let that = this
+
+            let dict = {}
+            let queue = []
+
+            that.remember = function (knot) {
+                dict[knot] = knot
+                queue.push(knot)
+            }
+            that.put = function (knot, y, x, z) {
+                dict[knot].assignCoordinates(y, x, z)
+            }
+
+            that.draw = function () {
+                for(let i = 0; i < queue.length; i++) {
+                    queue[i].draw()
+                }
+            }
+        }
+
+        // RectangleOnPaper class - old style
+        function RectangleOnPaper(w, h, d, frontRatio) {
+            let that = this
+
+            let PROJECTION_Y = height * 0.5
+            let PROJECTION_X = width * 0.5
+
+            let frontRadius = w
+
+            let verticles
+            let lines
+
+            that.assignCoordinates = function (y, x, z) {
+                that.y = y
+                that.x = x
+                that.z = z
+            }
+
+            that.project = function (y, x, z) {
+                let sizeProjection = FIELD_OF_VIEW / (FIELD_OF_VIEW + z)
+
+                return {
+                    sizeProjection: sizeProjection,
+                    y: (y * sizeProjection) + PROJECTION_Y,
+                    x: (x * sizeProjection) + PROJECTION_X
+                }
+            }
+
+            that.draw = function () {
+
+            }
+        }
+        function constructDC1() {
+
+        }
+        function constructDC2() {
+
+        }
+        function constructDC3() {
+
+        }
+        function constructDC4() {
+
+        }
+        function constructDC5() {
+
+        }
+        function constructDC6() {
+
+        }
+
+        let fabrick = new Fabrick()
+        let knot1 = fabrick.constructKnot(w, h, d)
+
+        let pencil = new Pencil()
+        pencil.remember(knot1)
+
+        let bottomPointer
+
+        // keep
+        // please keep.
+        let topLeftPointerBelongings
+
+        // see what is belongings
+        // vertical-bounce-handler-at-eye-in-relative-size
+        let topLeftPointerBelongingsAtFloorAtBottomProjection
+        let topLeftPointerBelongingsAtFloorAtRight
+
+        let topRightPointerBelongings
+
+        pencil.put(y, x, z)
+
+        pencil.draw()
+
+        // see sticked-album-in-queued-sequence at picture
+        // to see what is required to construct at first sticked item
+
+        // 2 floors enough, knot6 at top is closing
+        // knot2, knot3, knot4, knot5, knot6
+
+        // that requires 3 iterations for my skills
+
+        // please reject using english language by moonits
+        // they have high fps. these broadcasters
+
+        // sorry i need to sleep
+    </script>
+</body>
+</html>
